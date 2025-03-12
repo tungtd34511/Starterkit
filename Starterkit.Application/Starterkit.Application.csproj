@@ -6,4 +6,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Starterkit.Core\Starterkit.Core.csproj" />
+    <ProjectReference Include="..\Starterkit.Infrastracture\Starterkit.Infrastracture.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="IServices\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+
 </Project>
