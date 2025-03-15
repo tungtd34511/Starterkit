@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Starterkit.UI._keenthemes.libs;
 
 namespace Starterkit.UI.Controllers;
@@ -16,6 +17,7 @@ public class DashboardsController : Controller
 
     [HttpGet("/")]
     [HttpGet("/dashboards")]
+    [Authorize]
     public IActionResult Index()
     {
         return View(_theme.GetPageView("Dashboards", "Index.cshtml"));

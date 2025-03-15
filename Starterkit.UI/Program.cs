@@ -1,24 +1,11 @@
-using Starterkit.UI._keenthemes;
-using Starterkit.UI._keenthemes.libs;
+using Starterkit.Infrastracture.Extensions;
+using Starterkit.UI.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
-
-builder.Services.AddScoped<IKTTheme, KTTheme>();
-builder.Services.AddSingleton<IKTBootstrapBase, KTBootstrapBase>();
-
-IConfiguration themeConfiguration = new ConfigurationBuilder()
-                            .AddJsonFile("_keenthemes/config/themesettings.json")
-                            .Build();
-
-IConfiguration iconsConfiguration = new ConfigurationBuilder()
-                            .AddJsonFile("_keenthemes/config/icons.json")
-                            .Build();
-
-KTThemeSettings.init(themeConfiguration);
-KTIconsSettings.init(iconsConfiguration);
+builder.Services.AddInfrastracture(builder.Configuration)
+    .AddWebServices();
 
 var app = builder.Build();
 
@@ -45,6 +32,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 app.UseThemeMiddleware();
 
